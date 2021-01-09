@@ -1,0 +1,23 @@
+<% include ../header %>
+<a href="news/create" class="btn btn-primary">Add News</a>
+<% for(let data of ListNews){ %>
+<div class="card">
+  <div class="card-body">
+    <%= data.name %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Posted on : <%= data.released_on %></h5>
+    <a href="news/update/<%= data.id %>" class="btn btn-primary">Edit</a>
+    <a class="btn btn-primary" data-toggle="collapse" href="#data<%= data.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Delete News
+    </a>
+  </div>
+</div>
+
+<div class="collapse" id="data<%= data.id %>">
+  <div class="card card-body">
+    Apakah anda yakin untuk menghapus berita <%= data.name %> ?
+    <a href="news/delete/<%= data.id %>" class="btn btn-primary">Delete</a>
+  </div>
+</div>
+<% } %>
